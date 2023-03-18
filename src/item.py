@@ -51,3 +51,9 @@ class Item:
             data = csv.reader(file)
             for row in data:
                 cls.all.append(row)
+            cls.all.pop(1)
+
+    @staticmethod
+    def string_to_number(data):
+        for row in data:
+            row[1] = int(row[1])
