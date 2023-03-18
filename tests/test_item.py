@@ -23,3 +23,23 @@ def test_apply_discount_without(product):
     assert product.price == 10
 
 
+def test_name():
+    """
+    Проверка сеттера name
+    """
+    Item.name = 'СмартфонСмартфон'
+    assert 'Длина наименования товара больше 10 символов'
+
+
+def test_string_to_number():
+    """
+    Конвертирование строки-числа в число
+    """
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+
+
+def test_instantiate_from_csv():
+    item1 = Item.all
+    item1 == ['Смартфон', '100', '1']
+
