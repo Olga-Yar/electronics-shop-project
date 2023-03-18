@@ -23,12 +23,12 @@ def test_apply_discount_without(product):
     assert product.price == 10
 
 
-def test_name(product):
+def test_name():
     """
     Проверка сеттера name
     """
     Item.name = 'СмартфонСмартфон'
-    assert Exception('Длина наименования товара больше 10 символов')
+    assert 'Длина наименования товара больше 10 символов'
 
 
 def test_string_to_number():

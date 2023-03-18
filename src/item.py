@@ -28,8 +28,9 @@ class Item:
     @name.setter
     def name(self, value: str):
         if len(value) > 10:
-            return 'Длина наименования товара больше 10 символов'
-        self.__name = value
+            Exception('Длина наименования товара больше 10 символов')
+        else:
+            self.__name = value
 
     def calculate_total_price(self) -> float:
         """
@@ -57,3 +58,10 @@ class Item:
     def string_to_number(data):
         data = int(float(data))
         return data
+
+# item1 = Item('Телефон', 10000, 5)
+# print(item1.name)
+# item1.name = 'Smartphone'
+# print(item1.name)
+# item1.name = 'Smartphone 11'
+# print(item1.name)
