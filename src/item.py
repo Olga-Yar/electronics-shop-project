@@ -1,3 +1,6 @@
+import csv
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -41,3 +44,10 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= self.pay_rate
+
+    @classmethod
+    def instantiate_from_csv(cls):
+        with open('../src/items.csv', 'r', encoding='windows-1251') as file:
+            data = csv.reader(file)
+            for row in data:
+                cls.all.append(row)
