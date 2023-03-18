@@ -55,5 +55,5 @@ class Item:
 
     @staticmethod
     def string_to_number(data):
-        for row in data:
-            row[1] = int(row[1])
+        data = int(float(data))
+        return data
