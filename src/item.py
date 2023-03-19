@@ -59,9 +59,8 @@ class Item:
         data = int(float(data))
         return data
 
-# item1 = Item('Телефон', 10000, 5)
-# print(item1.name)
-# item1.name = 'Smartphone'
-# print(item1.name)
-# item1.name = 'Smartphone 11'
-# print(item1.name)
+    def __repr__(self):
+        return f"Item('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return self.__name
