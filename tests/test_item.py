@@ -43,3 +43,12 @@ def test_instantiate_from_csv():
     item1 = Item.all
     item1 == ['Смартфон', '100', '1']
 
+
+def test_repr():
+    item1 = Item('Смартфон', 10, 2)
+    assert repr(item1) == "Item('Смартфон', 10, 2)"
+
+
+def test_str():
+    item1 = Item('Смартфон', 10, 2)
+    assert str(item1) == 'Смартфон'
