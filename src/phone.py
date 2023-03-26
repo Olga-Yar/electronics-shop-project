@@ -9,11 +9,6 @@ class Phone(Item):
         else:
             ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
 
-    def __add__(self, other):
-        if not isinstance(other, Phone):
-            raise ValueError('Нельзя сложить Phone или Item с экземплярами не Phone или Item классов.')
-        return self.quantity + other.quantity
-
     def __repr__(self):
         return f"Phone('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
 
