@@ -9,6 +9,9 @@ class MixinLog:
         return self.__language
 
     def change_lang(self):
+        """
+        Функция для изменения языка
+        """
         if self.__language == 'RU':
             self.__language = 'EN'
         else:
@@ -18,6 +21,9 @@ class MixinLog:
 class Keyboard(Item, MixinLog):
 
     def __init__(self, name, price, quantity, language='EN'):
+        """
+        Инициализация дочернего класса
+        """
         super().__init__(name, price, quantity)
         self.__language = language
 
