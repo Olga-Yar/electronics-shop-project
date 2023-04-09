@@ -1,4 +1,6 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+import csv
+
 import pytest
 from src.item import Item
 from src.phone import Phone
@@ -42,7 +44,16 @@ def test_string_to_number():
 
 def test_instantiate_from_csv():
     item1 = Item.all
-    item1 == ['Смартфон', '100', '1']
+    assert item1 == ['Смартфон', '100', '1']
+
+
+def test_instantiate_from_csv_error():
+    with open('../src/items_test.csv', 'r', encoding='windows-1251') as file:
+        data = csv.reader(file)
+    assert Exception('Файл item.csv поврежден')
+    with open('../src/items_test_.csv', 'r', encoding='windows-1251') as file:
+        data = csv.reader(file)
+    assert FileNotFoundError
 
 
 def test_repr():
