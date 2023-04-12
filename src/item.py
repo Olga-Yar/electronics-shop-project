@@ -53,18 +53,17 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        try:
-            with open('../src/items.csv', 'r', encoding='windows-1251') as file:
-                data = csv.reader(file)
+        with open('../src/items.csv', 'r', encoding='windows-1251') as file:
+            data = csv.reader(file)
+            if file is None:
+                raise FileNotFoundError('Отсутствует файл item.csv')
+            else:
                 for row in data:
                     if len(row) < 3:
                         raise InstantiateCSVError('Файл item.csv поврежден')
-                    cls.all.append(row)
-            cls.all.pop(1)
-        except FileNotFoundError:
-            print('Отсутствует файл item.csv')
-        except InstantiateCSVError as e:
-            print(e)
+                    else:
+                        cls.all.append(row)
+        return cls.all.pop(1)
 
     @staticmethod
     def string_to_number(data):
