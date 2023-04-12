@@ -2,7 +2,7 @@
 import csv
 
 import pytest
-from src.item import Item
+from src.item import Item, InstantiateCSVError
 from src.phone import Phone
 
 
@@ -47,13 +47,16 @@ def test_instantiate_from_csv():
     assert item1 == ['Смартфон', '100', '1']
 
 
+def test_instantiate_from_csv_filenotfound():
+    with pytest.raises(FileNotFoundError):
+        with open('nofile.csv', 'r') as f:
+            content = f.read()
+
+
 def test_instantiate_from_csv_error():
-    with open('../src/items_test.csv', 'r', encoding='windows-1251') as file:
-        data = csv.reader(file)
-    assert Exception('Файл item.csv поврежден')
-    with open('../src/items_test_.csv', 'r', encoding='windows-1251') as file:
-        data = csv.reader(file)
-    assert FileNotFoundError
+    with pytest.raises(InstantiateCSVError) as f:
+        raise InstantiateCSVError('Файл item.csv поврежден')
+    assert str(f.value) == 'Файл item.csv поврежден'
 
 
 def test_repr():
